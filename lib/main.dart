@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'ui/home_screen.dart';
+import 'package:porto_project/components/splash_Screen.dart';
+// import 'ui/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: SplashScreen(),
     );
   }
 }

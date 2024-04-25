@@ -195,38 +195,45 @@ class _MyHomePageState extends State<MyHomePage> {
             title:
                 const Text('K E L U A R', style: TextStyle(color: Colors.red)),
             onTap: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text("Konfirmasi"),
-                      content: Text("Apakah Anda yakin ingin keluar?"),
-                      actions: [
-                        OutlinedButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(
-                            "Tidak",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        FilledButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text(
-                            "Ya",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )
-                      ],
-                    );
-                  });
+              _showDialogAlertDialog(context);
             },
           ),
         ],
       ),
     );
+  }
+
+  Future<dynamic> _showDialogAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Konfirmasi"),
+            content: Text("Apakah Anda yakin ingin keluar?"),
+            actions: [
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Tidak",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              FilledButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  "Ya",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                ),
+              )
+            ],
+          );
+        });
   }
 }
