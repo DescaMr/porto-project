@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
   AppBar _appBar() {
     return AppBar(
       title: Text(
-        'Komed',
+        'Komeng',
         style: TextStyle(color: Colors.white),
       ),
       centerTitle: true,
@@ -98,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           _scaffoldKey.currentState!.openDrawer();
         },
-        icon: Icon(Icons.settings),
+        icon: Icon(Icons.menu),
         color: Colors.white,
       ),
       backgroundColor: Colors.red,
@@ -107,65 +107,125 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Drawer _drawer(BuildContext context) {
     return Drawer(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Material(
-              color: Colors.red,
-              child: InkWell(
-                onTap: () {
-                  /// Close Navigation drawer before
-                  Navigator.pop(context);
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfile()),);
-                },
-                child: Container(
-                  padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).padding.top, bottom: 24),
-                  child: const Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                          radius: 52,
-                          backgroundImage: AssetImage('assets/bill.jpg'),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Material(
+                    color: Colors.red,
+                    child: InkWell(
+                      onTap: () {
+                        /// Close Navigation drawer before
+                        Navigator.pop(context);
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfile()),);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).padding.top,
+                            bottom: 24),
+                        child: const Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: CircleAvatar(
+                                radius: 52,
+                                backgroundImage: AssetImage('assets/bill.jpg'),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text(
+                              'Kakek Perkasa',
+                              style: TextStyle(
+                                  fontSize: 28,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Text(
+                              'oldbutgold@gmail.com',
+                              style:
+                                  TextStyle(fontSize: 14, color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        'Kakek Perkasa',
-                        style: TextStyle(
-                            fontSize: 28,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      Text(
-                        'oldbutgold@gmail.com',
-                        style: TextStyle(fontSize: 14, color: Colors.white),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.person,
+                      color: Colors.blueGrey,
+                    ),
+                    title: const Text(
+                      'A K U N',
+                      style: TextStyle(color: Colors.blueGrey),
+                    ),
+                    onTap: () {
+                      // Update the state of the app.
+                      // ...
+                    },
+                  ),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.settings,
+                      color: Colors.blueGrey,
+                    ),
+                    title: const Text('P E N G A T U R A N',
+                        style: TextStyle(color: Colors.blueGrey)),
+                    onTap: () {
+                      // Update the state of the app.
+                      // ...
+                    },
+                  ),
+                ],
               ),
             ),
-            ListTile(
-              title: const Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+          ),
+          Divider(height: 1),
+          ListTile(
+            leading: const Icon(
+              Icons.exit_to_app,
+              color: Colors.red,
             ),
-            ListTile(
-              title: const Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
-        ),
+            title:
+                const Text('K E L U A R', style: TextStyle(color: Colors.red)),
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Konfirmasi"),
+                      content: Text("Apakah Anda yakin ingin keluar?"),
+                      actions: [
+                        OutlinedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            "Tidak",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                        FilledButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            "Ya",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        )
+                      ],
+                    );
+                  });
+            },
+          ),
+        ],
       ),
     );
   }

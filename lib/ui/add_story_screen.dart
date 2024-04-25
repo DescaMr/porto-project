@@ -6,13 +6,34 @@ class AddStoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          "Add Story Screen Page",
-          style: TextStyle(fontSize: 30),
-        ),
-      ),
+    return Scaffold(
+      body: LayoutBuilder(builder: (BuildContext context, contraints) {
+        if (contraints.maxWidth < 600) {
+          return ListView(
+            children: _generateConstraints(),
+          );
+        } else if (contraints.maxWidth < 900) {
+          return GridView.count(
+            crossAxisCount: 2,
+            children: _generateConstraints(),
+          );
+        } else {
+          return GridView.count(
+            crossAxisCount: 6,
+            children: _generateConstraints(),
+          );
+        }
+      }),
     );
+  }
+
+  List<Widget> _generateConstraints() {
+    return List<Widget>.generate(10, (index) {
+      return Container(
+        margin: EdgeInsets.all(8),
+        color: Colors.blueGrey,
+        height: 200,
+      );
+    });
   }
 }
