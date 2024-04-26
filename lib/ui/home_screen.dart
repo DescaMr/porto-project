@@ -41,9 +41,10 @@ class _MyHomePageState extends State<MyHomePage> {
   BottomAppBar _navbar() {
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
-      notchMargin: 6.0,
-      // elevation: 0.5,
-      height: 83,
+      notchMargin: 5.0,
+      elevation: 0.5,
+      padding: EdgeInsets.all(0),
+      height: 60,
       clipBehavior: Clip.antiAlias,
       child: SizedBox(
         // height: kBottomNavigationBarHeight,
@@ -52,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.red,
           currentIndex: _selectedIndex,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.black,
+          unselectedItemColor: Colors.white.withOpacity(.60),
           onTap: (index) {
             setState(() {
               _selectedIndex = index;
@@ -62,11 +63,11 @@ class _MyHomePageState extends State<MyHomePage> {
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.note_add_outlined),
-              label: '',
+              label: 'wow',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.menu_rounded),
-              label: '',
+              label: 'wakwaw',
             ),
           ],
         ),
