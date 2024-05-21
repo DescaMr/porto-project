@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:porto_project/ui/home_screen.dart';
+import 'package:porto_project/ui/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,16 +19,17 @@ class _SplashScreenState extends State<SplashScreen> {
         splash: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/komeng.png',
-              width: 300,
+            Icon(
+              Icons.people,
+              size: 100,
+              color: Colors.white,
             ),
             const Text(
-              "KOMENG UHUY",
+              "SocialBox",
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
           ],
@@ -35,8 +37,8 @@ class _SplashScreenState extends State<SplashScreen> {
         splashIconSize: 300,
         splashTransition: SplashTransition.fadeTransition,
         duration: 3000,
-        backgroundColor: Colors.white,
-        nextScreen: MyHomePage(),
+        backgroundColor: Color(0xFF29B6F6),
+        nextScreen: LoginScreen(),
       ),
     );
   }
